@@ -1,3 +1,5 @@
+@import url(./__edit/button__edit.css);
+
 .button {
   background-color: transparent;
   border: 1px solid white;
@@ -12,3 +14,4 @@
 .button:focus {
   outline-color: greenyellow;
 }
+
