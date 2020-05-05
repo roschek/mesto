@@ -1,2 +1,2 @@
 # mesto
-проект для курса Yandex.practicum, технологии HTML, CSS, JS
+проект для курса Yandex.practikum, технологии HTML, CSS, JS
