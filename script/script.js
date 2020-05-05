@@ -1,14 +1,14 @@
 
 const button = document.querySelector('.button');
+const buttonEdit = document.querySelector('.button__edit');
 const placesList = document.querySelector('.places-list');
-// Переменная не используется
+
 const likeIcon = document.querySelector('.place-card__like-icon');
 const popup = document.querySelector('.popup');
+const popupEdit =document.querySelector('.popup__edit');
 const popupClose = document.querySelector('.popup__close');
+const popupCloseEdit = document.querySelector('.popup__close-edit');
 const form = document.forms.new;
-
-//++ Можно лучше
-// Вызов методов перенести в конец скрипта
 
 
 
@@ -17,6 +17,10 @@ const form = document.forms.new;
 function togglePopup() {
   popup.classList.toggle('popup_is-opened');
 };
+
+function togglePopupEdit(){
+  popupEdit.classList.toggle('popup_is-opened');
+}
 
 
 
@@ -115,8 +119,10 @@ placesList.addEventListener('click', function (event) {
    };
 })
 
+buttonEdit.addEventListener('click',togglePopupEdit);
 button.addEventListener('click', togglePopup);
 popupClose.addEventListener('click', togglePopup);
+popupCloseEdit.addEventListener('click', togglePopupEdit);
 form.addEventListener('submit', addNewPhoto);
 addPhoto();
 
