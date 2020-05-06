@@ -18,6 +18,8 @@ function togglePopupEdit(){
   popupEdit.classList.toggle('popup_is-opened');
 }
 
+//изменение названия карточки 
+
 function ChangePerson(event){
   event.preventDefault();
   const userName = document.querySelector('.user-info__name');
