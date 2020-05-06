@@ -1,4 +1,4 @@
-.button__popup-edit{
+.button__popup-edit:valid{
   width: 100%;
   height: 50px;
   border: 1px solid rgba(0, 0, 0, .2);
@@ -6,4 +6,10 @@
   color: white;
   font-size: 18px;
   background-color: black;
+}
+
+.button__popup-edit:invalid{
+  background-color: white;
+  box-shadow: 2px 2px 2px;
+  color: grey;
 }

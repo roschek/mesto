@@ -45,9 +45,9 @@
         <img src="images/close.svg" alt="" class="popup__close">
         <h3 class="popup__title">Новое место</h3>
         <form class="popup__form" name="new">
-            <input type="text" name="name" class="popup__input popup__input_type_name" placeholder="Название" required>
-            <input type="text" name="link" class="popup__input popup__input_type_link-url" placeholder="Ссылка на картинку" required>
-            <button type class="button popup__button">+</button>
+            <input type="text" name="name" class="popup__input popup__input_type_name" placeholder="Название" required minlength="2" maxlength="30">
+            <input type="text" name="link" class="popup__input popup__input_type_link-url" placeholder="Ссылка на картинку" required minlength="2" maxlength="30">
+            <button type class="button popup__button" >+</button>
         </form>
       </div>
     </div>
@@ -58,8 +58,8 @@
           <img src="images/close.svg" alt="" class="popup__close popup__close-edit">
           <h3 class="popup__title">Редактировать профиль</h3>
           <form class="popup__form" name="person">
-              <input type="text" name="pers" class="popup__input popup__input_type_name" placeholder="Jacques Cousteau" required>
-              <input type="text" name="description" class="popup__input popup__input_type_link-url" placeholder="Sailor, researcher" required>
+              <input type="text" name="pers" class="popup__input popup__input_type_name" placeholder="Jacques Cousteau" required minlength="2" maxlength="30">
+              <input type="text" name="description" class="popup__input popup__input_type_link-url" placeholder="Sailor, researcher" required minlength="2" maxlength="30">
               <button type class="button button__popup-edit">Сохранить</button>
           </form>
         </div>

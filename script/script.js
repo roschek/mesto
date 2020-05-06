@@ -13,6 +13,17 @@ const form = document.forms.new;
 const formEdit = document.forms.person;
 
 
+//валидация
+
+function checkInputValidity(){
+
+}
+
+
+function setSubmitButtonState(){
+  button.removeAttribute('disabled');
+}
+
 function togglePopup() {
   popup.classList.toggle('popup_is-opened');
 };
@@ -36,8 +47,9 @@ function ChangePerson(event) {
   userDescription.textContent = description.value;
   formEdit.reset();
   togglePopupEdit()
-}
+  }
 
+//создание карточки с фоткой
 
 function createNewPhoto(nameValue, linkValue) {
 
@@ -72,6 +84,7 @@ function createNewPhoto(nameValue, linkValue) {
   return cardContainer;
 };
 
+//  добавление карточек при загрузке
 
 function addPhoto() {
 
@@ -82,6 +95,8 @@ function addPhoto() {
     placesList.appendChild(photoArray);
   }
 };
+
+//добавление карточек попапом
 
 function addNewPhoto(event) {
   event.preventDefault();
@@ -122,10 +137,9 @@ placesList.addEventListener('click', function (event) {
     popupImage.setAttribute('src', `${image}`);
 
     togglePopupPhoto();
-
   }
-
 });
+
 
 buttonEdit.addEventListener('click', togglePopupEdit);
 button.addEventListener('click', togglePopup);
