@@ -5,3 +5,8 @@
   right: -26px;
   cursor: pointer;
 }
+
+.popup__close-photo{
+  top:30px;
+  right:100px;
+}
