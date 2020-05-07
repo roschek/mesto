@@ -13,3 +13,13 @@
 .popup__input:last-of-type {
   margin-bottom: 0;
 }
+
+.popup__input_type_name:invalid:not(:focus):not(:placeholder-shown) +.form-error{
+  display: block;
+}
+
+.popup__input_type_link-url:invalid:not(:focus):not(:placeholder-shown)+.form-error{
+  display: block;
+}
+
+

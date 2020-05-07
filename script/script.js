@@ -1,6 +1,6 @@
-
 const button = document.querySelector('.button');
 const buttonEdit = document.querySelector('.button__edit');
+
 const placesList = document.querySelector('.places-list');
 const likeIcon = document.querySelector('.place-card__like-icon');
 const popup = document.querySelector('.popup');
@@ -9,15 +9,20 @@ const popupPhoto = document.querySelector('.popup__photo');
 const popupClose = document.querySelector('.popup__close');
 const popupCloseEdit = document.querySelector('.popup__close-edit');
 const popupClosePhoto = document.querySelector('.popup__close-photo');
-const form = document.forms.new;
-const formEdit = document.forms.person;
+
+
+
 
 
 function togglePopup() {
   popup.classList.toggle('popup_is-opened');
+  submitForm.setAttribute('disabled',true);
+  form.reset();
 };
 function togglePopupEdit() {
   popupEdit.classList.toggle('popup_is-opened');
+  submitFormEdit.setAttribute('disabled',true);
+  formEdit.reset();
 }
 
 function togglePopupPhoto() {
@@ -36,8 +41,9 @@ function ChangePerson(event) {
   userDescription.textContent = description.value;
   formEdit.reset();
   togglePopupEdit()
-}
+  }
 
+//создание карточки с фоткой
 
 function createNewPhoto(nameValue, linkValue) {
 
@@ -72,6 +78,7 @@ function createNewPhoto(nameValue, linkValue) {
   return cardContainer;
 };
 
+//  добавление карточек при загрузке
 
 function addPhoto() {
 
@@ -82,6 +89,8 @@ function addPhoto() {
     placesList.appendChild(photoArray);
   }
 };
+
+//добавление карточек попапом
 
 function addNewPhoto(event) {
   event.preventDefault();
@@ -122,10 +131,9 @@ placesList.addEventListener('click', function (event) {
     popupImage.setAttribute('src', `${image}`);
 
     togglePopupPhoto();
-
   }
-
 });
+
 
 buttonEdit.addEventListener('click', togglePopupEdit);
 button.addEventListener('click', togglePopup);
