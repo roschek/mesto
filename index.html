@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
   <title>Mesto</title>
   <link rel="stylesheet" href="pages/index.css">
 </head>
+
 <body>
   <div class="root">
     <header class="header root__section">
@@ -28,7 +30,8 @@
       <!-- Пример вёрстки карточки: -->
 
       <div class="place-card">
-        <div class="place-card__image" style="background-image: url(https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg)">
+        <div class="place-card__image"
+          style="background-image: url(https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg)">
           <button class="place-card__delete-icon"></button>
         </div>
         <div class="place-card__description">
@@ -36,7 +39,7 @@
           <button class="place-card__like-icon"></button>
         </div>
       </div>
-    
+
       <!-- конец примера. -->
 
     </div>
@@ -44,35 +47,54 @@
       <div class="popup__content">
         <img src="images/close.svg" alt="" class="popup__close">
         <h3 class="popup__title">Новое место</h3>
-        <form class="popup__form" name="new">
-            <input type="text" name="name" class="popup__input popup__input_type_name" placeholder="Название" required minlength="2" maxlength="30">
-            <input type="text" name="link" class="popup__input popup__input_type_link-url" placeholder="Ссылка на картинку" required minlength="2" maxlength="30">
-            <button type class="button popup__button" >+</button>
+        <form id="new" class="popup__form" name="new">
+          <div class="input-container">
+            <input id="name" type="text" name="name" class="popup__input popup__input_type_name input__new"
+              placeholder="Название" minlength="2" maxlength="30" required>
+            <span id = "error-name" class="form-error error-hidden">sdfbgsgb</span>
+          </div>
+          <div class="input-container">
+            <input id="link" type="text" name="link" class="popup__input popup__input_type_link-url input__new"
+              placeholder="Ссылка на картинку" minlength="2" maxlength="30" required>
+            <span id="error-link" class="form-error error-hidden">fgbgtedfv</span>
+          </div>
+          <button id="submit" class="button popup__button" disabled>+</button>
         </form>
       </div>
     </div>
-      <!--новый див с редактированием карточки-->
+    <!--новый див с редактированием карточки-->
 
-      <div class="popup popup__edit">
-        <div class="popup__content">
-          <img src="images/close.svg" alt="" class="popup__close popup__close-edit">
-          <h3 class="popup__title">Редактировать профиль</h3>
-          <form class="popup__form" name="person">
-              <input type="text" name="pers" class="popup__input popup__input_type_name" placeholder="Jacques Cousteau" required minlength="2" maxlength="30">
-              <input type="text" name="description" class="popup__input popup__input_type_link-url" placeholder="Sailor, researcher" required minlength="2" maxlength="30">
-              <button type class="button button__popup-edit">Сохранить</button>
-          </form>
-        </div>
-      </div> 
+    <div class="popup popup__edit">
+      <div class="popup__content">
+        <img src="images/close.svg" alt="" class="popup__close popup__close-edit">
+        <h3 class="popup__title">Редактировать профиль</h3>
+        <form id="person" class="popup__form" name="person">
+          <div class="input-container">
+            <input id="pers" type="text" name="pers" class="popup__input popup__input_type_name input__person"
+              placeholder="Jacques Cousteau" minlength="2" maxlength="30" required>
+            <span id ="error-pers"class="form-error error-hidden"></span>
+          </div>
+          <div class="input-container">
+            <input id="description" type="text" name="description"
+              class="input__person popup__input popup__input_type_link-url" placeholder="Sailor, researcher"
+              minlength="2" maxlength="30" required>
+            <span id="error-description" class="form-error error-hidden"></span>
+          </div>
+          <button id="submit-pers" class="button button__popup-edit" disabled>Сохранить</button>
+        </form>
+      </div>
+    </div>
 
-      <!--див с фоточками-->
-      <div class="popup popup__photo">
-            <img src="images/close.svg" alt="" class="popup__close popup__close-photo">
-           <img src="#" alt="" class="popup__image">         
-      </div> 
-    
+    <!--див с фоточками-->
+    <div class="popup popup__photo">
+      <img src="images/close.svg" alt="" class="popup__close popup__close-photo">
+      <img src="#" alt="" class="popup__image">
+    </div>
+
   </div>
   <script src="script/cards.js"></script>
+  <script src="script/validation.js"></script>
   <script src="script/script.js"></script>
 </body>
+
 </html>

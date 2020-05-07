@@ -1,4 +1,3 @@
-
 const button = document.querySelector('.button');
 const buttonEdit = document.querySelector('.button__edit');
 const placesList = document.querySelector('.places-list');
@@ -9,20 +8,10 @@ const popupPhoto = document.querySelector('.popup__photo');
 const popupClose = document.querySelector('.popup__close');
 const popupCloseEdit = document.querySelector('.popup__close-edit');
 const popupClosePhoto = document.querySelector('.popup__close-photo');
-const form = document.forms.new;
-const formEdit = document.forms.person;
 
 
-//валидация
-
-function checkInputValidity(){
-
-}
 
 
-function setSubmitButtonState(){
-  button.removeAttribute('disabled');
-}
 
 function togglePopup() {
   popup.classList.toggle('popup_is-opened');
