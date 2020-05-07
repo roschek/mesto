@@ -1,9 +1,6 @@
 .form-error {
   font-size: 12px;
   color: red;
-  display: block;
+  display: none;
 }
 
-.error-hidden{
-  display:none;
-}

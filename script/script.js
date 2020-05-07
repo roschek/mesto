@@ -1,5 +1,6 @@
 const button = document.querySelector('.button');
 const buttonEdit = document.querySelector('.button__edit');
+
 const placesList = document.querySelector('.places-list');
 const likeIcon = document.querySelector('.place-card__like-icon');
 const popup = document.querySelector('.popup');
@@ -15,9 +16,13 @@ const popupClosePhoto = document.querySelector('.popup__close-photo');
 
 function togglePopup() {
   popup.classList.toggle('popup_is-opened');
+  submitForm.setAttribute('disabled',true);
+  form.reset();
 };
 function togglePopupEdit() {
   popupEdit.classList.toggle('popup_is-opened');
+  submitFormEdit.setAttribute('disabled',true);
+  formEdit.reset();
 }
 
 function togglePopupPhoto() {
