@@ -14,12 +14,12 @@
   margin-bottom: 0;
 }
 
-.popup__input_type_name:invalid:not(:focus):not(:placeholder-shown) +.form-error{
-  display: block;
+.popup__input_type_name:valid:not(:focus):not(:placeholder-shown) +.form-error{
+  display: none;
 }
 
-.popup__input_type_link-url:invalid:not(:focus):not(:placeholder-shown)+.form-error{
-  display: block;
+.popup__input_type_link-url:valid:not(:focus):not(:placeholder-shown)+.form-error{
+  display: none;
 }
 
 
