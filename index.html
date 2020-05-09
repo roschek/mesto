@@ -30,7 +30,7 @@
       <!-- Пример вёрстки карточки: -->
 
       <div class="place-card">
-        <div class="place-card__image"
+        <div class="place-card__image" data-image="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg"
           style="background-image: url(https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg)">
           <button class="place-card__delete-icon"></button>
         </div>
@@ -51,7 +51,7 @@
           <div class="input-container">
             <input id="name" type="text" name="name" class="popup__input popup__input_type_name input__new"
               placeholder="Название" minlength="2" maxlength="30" required>
-            <span id = "name-error" class="form-error ">Это обязательное поле</span>
+            <span id="name-error" class="form-error ">Это обязательное поле</span>
           </div>
           <div class="input-container">
             <input id="link" type="text" name="link" class="popup__input popup__input_type_link-url input__new"
@@ -72,12 +72,11 @@
           <div class="input-container">
             <input id="pers" type="text" name="pers" class="popup__input popup__input_type_name"
               placeholder="Jacques Cousteau" minlength="2" maxlength="30" required>
-            <span id ="pers-error"class="form-error ">Это обязательное поле</span>
+            <span id="pers-error" class="form-error ">Это обязательное поле</span>
           </div>
           <div class="input-container">
-            <input id="description" type="text" name="description"
-              class="popup__input popup__input_type_link-url" placeholder="Sailor, researcher"
-              minlength="2" maxlength="30" required>
+            <input id="description" type="text" name="description" class="popup__input popup__input_type_link-url"
+              placeholder="Sailor, researcher" minlength="2" maxlength="30" required>
             <span id="description-error" class="form-error">Это обязательное поле</span>
           </div>
           <button id="submit-pers" class="button button__popup-edit">Сохранить</button>
@@ -93,7 +92,6 @@
 
   </div>
   <script src="script/cards.js"></script>
-  <script src="script/validation.js"></script>
   <script src="script/script.js"></script>
 </body>
 
