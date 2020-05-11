@@ -15,6 +15,7 @@
 }
 
 .popup__image{
+  padding: 0;
   z-index: 100;
   display: block;
   max-width: 80vw;
