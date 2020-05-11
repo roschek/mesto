@@ -1,8 +1,6 @@
 const button = document.querySelector('.button');
 const buttonEdit = document.querySelector('.button__edit');
 const placesList = document.querySelector('.places-list');
-// Переменная не используется
-const likeIcon = document.querySelector('.place-card__like-icon');
 const popup = document.querySelector('.popup');
 const popupEdit = document.querySelector('.popup__edit');
 const popupPhoto = document.querySelector('.popup__photo');
@@ -19,6 +17,23 @@ const errorMessages = {
   wrongUrl: 'Здесь должна быть ссылка',
 }
 
+function handlerInputForm(evt) {
+  const submit = evt.currentTarget.querySelector('.button');
+  // Надо исправить
+  //+++ Здесь тоже не только инпуты, но и кнопка
+  if(evt.currentTarget.elements!== submit ){
+  const [...inputs] = evt.currentTarget.elements;
+  
+  isFieldValid(evt.target);
+
+  if (inputs.every(isValidate)) {
+    setSubmitButtonState(submit, true);
+  } else {
+    setSubmitButtonState(submit, false);
+
+  }
+  }
+}
 
 // функция проверки
 function isValidate(input) {
@@ -31,35 +46,46 @@ function isValidate(input) {
   }
 
   if (input.validity.tooShort || input.validity.tooLong) {
-    // Вы же объект с ошибками завели, так им пользуйтесь!
-    input.setCustomValidity('Должно быть от 2 до 30 символов');
+    //++ Вы же объект с ошибками завели, так им пользуйтесь!
+    input.setCustomValidity(errorMessages.wrongLength);
+
     return false
   }
+  if (input.validity.typeMismatch) {
+
+    input.setCustomValidity(errorMessages.wrongUrl);
+    return false
+  }
+
   return input.checkValidity();
 }
 
 // вкл/выкл ошибки со слушателя
 function isFieldValid(input) {
   // Надо исправить
-  // parentNode -- это хардкод, сломается сразу при любом изменении верстки
-  // Лучше, например, через closest найти форму и в ней найти уже этот элемент по селектору
-  const errorElem = input.parentNode.querySelector(`#${input.id}-error`);
+  //++ parentNode -- это хардкод, сломается сразу при любом изменении верстки
+  const errorForm = input.closest('form')// Лучше, например, через closest найти форму и в ней найти уже этот элемент по селектору
+  const errorElem = errorForm.querySelector(`#${input.id}-error`);
   const valid = isValidate(input); // устанавливаем инпуту кастомные ошибки, если они есть.
   errorElem.textContent = input.validationMessage;
+  console.log(errorForm);
   return valid;
 }
 
-// проверки формы на валидность
-function isFormValid(form) { // validateForm
+
+ //проверки формы на валидность
+ 
+function isFormValid() { // validateForm
+
   const inputs = document.querySelectorAll('input');
 
   let valid = true;
-
+   
   inputs.forEach((input) => {
     if (!isFieldValid(input)) valid = false;
 
   });
-
+  
   return valid;
 }
 
@@ -73,37 +99,6 @@ function setSubmitButtonState(button, state) {
     button.setAttribute('disabled', true);
 
   }
-}
-function sendForm(evt) {
-  evt.preventDefault();
-  const currentForm = evt.target;
-  // Дело в том, что пока форма не активна, вы ее никак не отправите, значит условие лишено смысла.
-  // как, возможно, и вся функция.
-  const isValid = isFormValid(currentForm);
-
-  if (isValid) {
-    console.log('Форма успешно добавлена!');
-    evt.target.reset();
-  } else {
-    console.log('Форма не прошла валидацию ');
-  }
-}
-
-function handlerInputForm(evt) {
-  const submit = evt.currentTarget.querySelector('.button');
-  // Надо исправить
-  // Здесь тоже не только инпуты, но и кнопка
-  const [...inputs] = evt.currentTarget.elements;
-
-  isFieldValid(evt.target);
-
-  if (inputs.every(isValidate)) {
-    setSubmitButtonState(submit, true);
-  } else {
-    setSubmitButtonState(submit, false);
-
-  }
-
 }
 
 function togglePopup() {
@@ -123,16 +118,15 @@ function togglePopupPhoto() {
 
 // изменение названия карточки
 // Вот тут не соблюдается
-// camelCase
-function ChangePerson(event) {
+
+// ++ camelCase
+function changePerson(event) {
   event.preventDefault();
   const userName = document.querySelector('.user-info__name');
   const userDescription = document.querySelector('.user-info__job');
-  // Можно лучше
+  //++ Можно лучше
   // Деструктуризация
-  // const {pers, description} = formEdit.elements
-  const pers = formEdit.elements.pers;
-  const description = formEdit.elements.description;
+  const { pers, description } = formEdit.elements
   userName.textContent = pers.value;
   userDescription.textContent = description.value;
   formEdit.reset();
@@ -181,20 +175,20 @@ function createNewPhoto(nameValue, linkValue) {
 //  добавление карточек при загрузке
 
 function addPhoto() {
-  // Надо исправить
-  // Вы меня простите, но на 7 спринте уже пора
-  // использовать forEach без обращения к индексам
-  for (let i = 0; i < initialCards.length; i++) {
-    // const
-    let photoArray = createNewPhoto(initialCards[i].name, initialCards[i].link);
+
+  initialCards.forEach(function (elem) {
+    const photoArray = createNewPhoto(elem.name, elem.link);
 
     placesList.appendChild(photoArray);
-  }
-};
+  })
+}
+//+++/спасибо, разобрался, с for просто привычнее было, придется отвыкать/ Надо исправить
+// Вы меня простите, но на 7 спринте уже пора
+// использовать forEach без обращения к индексам
 
 // добавление карточек попапом
 
-function addNewPhoto(event) {
+function addNewPhoto() {
   event.preventDefault();
   const { name, link } = form.elements;
 
@@ -216,8 +210,10 @@ placesList.addEventListener('click', function (event) {
 
 placesList.addEventListener('click', function (event) {
 
-  // const!!!
-  let currentCard = event.target;
+
+  //++ const!!!
+  const currentCard = event.target;
+
 
   if (currentCard.classList.contains('place-card__delete-icon')) {
     currentCard.closest('.place-card').remove();
@@ -228,12 +224,14 @@ placesList.addEventListener('click', function (event) {
 
 // eslint-disable-next-line prefer-arrow-callback
 placesList.addEventListener('click', function (event) {
-  // const
-  let currentCard = event.target;
+
+  //++ const
+  const currentCard = event.target;
   const popupImage = document.querySelector('.popup__image');
-  if (currentCard.classList.contains('place-card__image') && !currentCard.classList.contains('place-card__delete-icon')) {
-    // Не надо длинного условия, проверьте -- в картинку попали?
-    // Супер, оставливаем всплытие события и выполняем все что вот дальше.
+  if (currentCard.classList.contains('place-card__image')) {
+    //++ Не надо длинного условия, проверьте -- в картинку попали?
+    //++ Супер, оставливаем всплытие события и выполняем все что вот дальше.
+
     const image = currentCard.getAttribute('data-image')
     console.log(image)
     popupImage.setAttribute('src', image);
@@ -242,51 +240,14 @@ placesList.addEventListener('click', function (event) {
   }
 });
 
-form.addEventListener('submit', sendForm);
 form.addEventListener('input', handlerInputForm, true);
-
-formEdit.addEventListener('submit', sendForm);
-formEdit.addEventListener('blur', handlerInputForm, true);
+formEdit.addEventListener('input', handlerInputForm, true);
 buttonEdit.addEventListener('click', togglePopupEdit);
 button.addEventListener('click', togglePopup);
 popupClose.addEventListener('click', togglePopup);
 popupCloseEdit.addEventListener('click', togglePopupEdit);
 popupClosePhoto.addEventListener('click', togglePopupPhoto);
 form.addEventListener('submit', addNewPhoto);
-formEdit.addEventListener('submit', ChangePerson);
+formEdit.addEventListener('submit', changePerson);
 addPhoto();
 
-// Работа отклоняется от проверки
-// ++Код (за исключением массива с данными) должен быть в одном файле,
-// модули вы еще не изучали./исправил но странно, в задании было сказано 'Если чувствуете, что скрипт разрастается — разбейте его на отдельные файлы и подключите их все в index.html.' /
-// ++Зум реализован некорректно, пропорции исходного изображения искажаются.// исправил
-// посмотрел+++/Вроде везде camelCase несколько раз п/ Не везде соблюден camelCase
-// ---
-
-// Советы (без учета которых сдача работы будет затруднительна):
-// +++/исправил, вроде работает/ Для того чтобы искть URL не надо делать сложного парсинга. При создании карточки добавьте ей атрибут с адресом.
-// А когда вам он понадобится -- прочитаете. Как это сделать: https://developer.mozilla.org/ru/docs/Web/HTML/Global_attributes/data-*
-
-// ++  Чтобы получить все инпуты формы надо пользоваться не spread оператором, а querySelectorAll, например, и сразу выбрать
-// все инпуты из формы. Тогда не придется проверять кнопка это или нет каждый раз./спасибо, исправил/
-
-
-
-// Ревью 1
-//
-// Здравствуйте!
-//
-// У формы есть метод checkValidity() -- он вернет true или false таким образом задача кастомной валидации сводится
-// вот к чему:
-
-// Создаете метод который будет устанавливать обработчики на переданную в него форму
-// Внутри этого метода один раз получите все инпуты формы и кнопку и передадите в обработчик, который устанавливаете
-// Далее тот обработчик вызывает на target события проверку поля, выводит или убирает ошибку, а потом
-// вызывается функция контроля кнопки которая на форме проверит checkValidity()
-
-// В том виде в котором сейчас это у вас -- это массо лишних обращений в DOM и код дублирующий функционал.
-// Реализуйте просто и чисто, простота вообще залог хорошего кода.
-
-// Крестик у попапа зума совсем не там где по макету.
-
-// Это и все комментарии надо исправить.

@@ -14,14 +14,21 @@
   }
 }
 
-.popup__image{
-  padding: 0;
+
+.popup__image {
+
+
   z-index: 100;
   display: block;
   max-width: 80vw;
   max-height: 80vh;
-  position: fixed;
-    object-fit: fill;
-  
+  object-fit: fill;
+  position: relative;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  float: right;
 
 }
+
