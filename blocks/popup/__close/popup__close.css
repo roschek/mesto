@@ -7,6 +7,9 @@
 }
 
 .popup__close-photo{
-  top:40px;
-  right:100px;
+  position:relative;
+  display: block;
+ top:-270px;
+ left:0;
+  
 }
