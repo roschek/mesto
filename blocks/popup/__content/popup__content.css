@@ -15,10 +15,12 @@
 }
 
 .popup__image {
+
   z-index: 100;
   display: block;
   max-width: 80vw;
   max-height: 80vh;
+
   object-fit: fill;
   position: relative;
   top: 0;
@@ -26,5 +28,6 @@
   left: 0;
   right: 0;
   float: right;
+
 }
 

@@ -65,12 +65,12 @@ function isValidate(input) {
 // вкл/выкл ошибки со слушателя
 function isFieldValid(input) {
   // Надо исправить
-  // parentNode -- это хардкод, сломается сразу при любом изменении верстки
-  // Лучше, например, через closest найти форму и в ней найти уже этот элемент по селектору
-  const errorElem = input.parentNode.querySelector(`#${input.id}-error`);
+  //++ parentNode -- это хардкод, сломается сразу при любом изменении верстки
+  const errorForm = input.closest('form')// Лучше, например, через closest найти форму и в ней найти уже этот элемент по селектору
+  const errorElem = errorForm.querySelector(`#${input.id}-error`);
   const valid = isValidate(input); // устанавливаем инпуту кастомные ошибки, если они есть.
   errorElem.textContent = input.validationMessage;
-  
+  console.log(errorForm);
   return valid;
 }
 
