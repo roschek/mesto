@@ -1,8 +1,6 @@
 const button = document.querySelector('.button');
 const buttonEdit = document.querySelector('.button__edit');
 const placesList = document.querySelector('.places-list');
-//++ Переменная не используется
-
 const popup = document.querySelector('.popup');
 const popupEdit = document.querySelector('.popup__edit');
 const popupPhoto = document.querySelector('.popup__photo');
@@ -50,6 +48,7 @@ function isValidate(input) {
   if (input.validity.tooShort || input.validity.tooLong) {
     //++ Вы же объект с ошибками завели, так им пользуйтесь!
     input.setCustomValidity(errorMessages.wrongLength);
+
     return false
   }
   if (input.validity.typeMismatch) {
@@ -60,7 +59,6 @@ function isValidate(input) {
 
   return input.checkValidity();
 }
-
 
 // вкл/выкл ошибки со слушателя
 function isFieldValid(input) {
@@ -74,16 +72,18 @@ function isFieldValid(input) {
   return valid;
 }
 
+
  //проверки формы на валидность
  
 function isFormValid() { // validateForm
+
   const inputs = document.querySelectorAll('input');
 
   let valid = true;
    
   inputs.forEach((input) => {
     if (!isFieldValid(input)) valid = false;
-    
+
   });
   
   return valid;
@@ -118,6 +118,7 @@ function togglePopupPhoto() {
 
 // изменение названия карточки
 // Вот тут не соблюдается
+
 // ++ camelCase
 function changePerson(event) {
   event.preventDefault();
@@ -174,8 +175,10 @@ function createNewPhoto(nameValue, linkValue) {
 //  добавление карточек при загрузке
 
 function addPhoto() {
+
   initialCards.forEach(function (elem) {
     const photoArray = createNewPhoto(elem.name, elem.link);
+
     placesList.appendChild(photoArray);
   })
 }
@@ -207,8 +210,10 @@ placesList.addEventListener('click', function (event) {
 
 placesList.addEventListener('click', function (event) {
 
+
   //++ const!!!
   const currentCard = event.target;
+
 
   if (currentCard.classList.contains('place-card__delete-icon')) {
     currentCard.closest('.place-card').remove();
@@ -219,12 +224,14 @@ placesList.addEventListener('click', function (event) {
 
 // eslint-disable-next-line prefer-arrow-callback
 placesList.addEventListener('click', function (event) {
+
   //++ const
   const currentCard = event.target;
   const popupImage = document.querySelector('.popup__image');
   if (currentCard.classList.contains('place-card__image')) {
     //++ Не надо длинного условия, проверьте -- в картинку попали?
     //++ Супер, оставливаем всплытие события и выполняем все что вот дальше.
+
     const image = currentCard.getAttribute('data-image')
     console.log(image)
     popupImage.setAttribute('src', image);
@@ -244,37 +251,3 @@ form.addEventListener('submit', addNewPhoto);
 formEdit.addEventListener('submit', changePerson);
 addPhoto();
 
-// Работа отклоняется от проверки
-// ++Код (за исключением массива с данными) должен быть в одном файле,
-// модули вы еще не изучали./исправил но странно, в задании было сказано 'Если чувствуете, что скрипт разрастается — разбейте его на отдельные файлы и подключите их все в index.html.' /
-// ++Зум реализован некорректно, пропорции исходного изображения искажаются.// исправил
-// посмотрел+++/Вроде везде camelCase несколько раз п/ Не везде соблюден camelCase
-// ---
-
-// Советы (без учета которых сдача работы будет затруднительна):
-// +++/исправил, вроде работает/ Для того чтобы искть URL не надо делать сложного парсинга. При создании карточки добавьте ей атрибут с адресом.
-// А когда вам он понадобится -- прочитаете. Как это сделать: https://developer.mozilla.org/ru/docs/Web/HTML/Global_attributes/data-*
-
-// ++  Чтобы получить все инпуты формы надо пользоваться не spread оператором, а querySelectorAll, например, и сразу выбрать
-// все инпуты из формы. Тогда не придется проверять кнопка это или нет каждый раз./спасибо, исправил/
-
-
-
-// Ревью 1
-//
-// Здравствуйте!
-//
-// У формы есть метод checkValidity() -- он вернет true или false таким образом задача кастомной валидации сводится
-// вот к чему:
-
-// Создаете метод который будет устанавливать обработчики на переданную в него форму
-// Внутри этого метода один раз получите все инпуты формы и кнопку и передадите в обработчик, который устанавливаете
-// Далее тот обработчик вызывает на target события проверку поля, выводит или убирает ошибку, а потом
-// вызывается функция контроля кнопки которая на форме проверит checkValidity()
-
-// В том виде в котором сейчас это у вас -- это массо лишних обращений в DOM и код дублирующий функционал.
-// Реализуйте просто и чисто, простота вообще залог хорошего кода.
-
-//++ Крестик у попапа зума совсем не там где по макету.
-
-// Это и все комментарии надо исправить.
