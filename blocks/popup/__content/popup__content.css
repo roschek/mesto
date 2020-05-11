@@ -17,12 +17,10 @@
 .popup__image{
   z-index: 100;
   display: block;
-  width: 80vw;
-  height: 80vh;
+  max-width: 80vw;
+  max-height: 80vh;
   position: fixed;
-  top:70px;
-  left:120px;
-  object-fit: fill;
+    object-fit: fill;
   
 
 }
