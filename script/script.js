@@ -120,7 +120,7 @@ function changePerson(event) {
   event.preventDefault();
   const userName = document.querySelector('.user-info__name');
   const userDescription = document.querySelector('.user-info__job');
-  const { pers, description } = formEdit.elements
+  const { pers, description} = formEdit.elements
   userName.textContent = pers.value;
   userDescription.textContent = description.value;
   formEdit.reset();
@@ -128,6 +128,13 @@ function changePerson(event) {
   
 }
 
+function cardValue(){
+  const name = document.querySelector('.user-info__name').innerHTML;
+  const profession = document.querySelector('.user-info__job').innerHTML;
+  const { pers, description} = formEdit.elements
+  pers.value=name;
+  description.value=profession;
+}
 
 // создание карточки с фоткой
 
@@ -230,6 +237,7 @@ placesList.addEventListener('click', function (event) {
 form.addEventListener('input', handlerInputForm, true);
 formEdit.addEventListener('input', handlerInputForm, true);
 buttonEdit.addEventListener('click', togglePopupEdit);
+buttonEdit.addEventListener('click',cardValue );
 button.addEventListener('click', togglePopup);
 popupClose.addEventListener('click', togglePopup,);
 popupCloseEdit.addEventListener('click', togglePopupEdit,);
