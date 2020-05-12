@@ -1,7 +1,6 @@
 const button = document.querySelector('.button');
 const buttonEdit = document.querySelector('.button__edit');
 const placesList = document.querySelector('.places-list');
-//++ Переменная не используется
 const popup = document.querySelector('.popup');
 const popupEdit = document.querySelector('.popup__edit');
 const popupPhoto = document.querySelector('.popup__photo');
@@ -54,6 +53,7 @@ function isValidate(input) {
   if (input.validity.tooShort || input.validity.tooLong) {
     //++ Вы же объект с ошибками завели, так им пользуйтесь!
     input.setCustomValidity(errorMessages.wrongLength);
+
     return false
   }
   if (input.validity.typeMismatch) {
@@ -65,14 +65,15 @@ function isValidate(input) {
   return input.checkValidity();
 }
 
-
 // вкл/выкл ошибки со слушателя
 function isFieldValid(input) {
+
   const errorForm = input.closest('form');
+
   const errorElem = errorForm.querySelector(`#${input.id}-error`);
   const valid = isValidate(input); // устанавливаем инпуту кастомные ошибки, если они есть.
   errorElem.textContent = input.validationMessage;
-  
+  console.log(errorForm);
   return valid;
 }
 
@@ -114,6 +115,7 @@ function cleanSpan() {
 }
 
 // изменение названия карточки
+
 function changePerson(event) {
   event.preventDefault();
   const userName = document.querySelector('.user-info__name');
@@ -176,8 +178,10 @@ function createNewPhoto(nameValue, linkValue) {
 //  добавление карточек при загрузке
 
 function addPhoto() {
+
   initialCards.forEach(function (elem) {
     const photoArray = createNewPhoto(elem.name, elem.link);
+
     placesList.appendChild(photoArray);
   })
 }
@@ -205,7 +209,9 @@ placesList.addEventListener('click', function (event) {
 //  удаление элемента
 
 placesList.addEventListener('click', function (event) {
+
   const currentCard = event.target;
+
 
   if (currentCard.classList.contains('place-card__delete-icon')) {
     currentCard.closest('.place-card').remove();
@@ -216,9 +222,11 @@ placesList.addEventListener('click', function (event) {
 
 // eslint-disable-next-line prefer-arrow-callback
 placesList.addEventListener('click', function (event) {
+
   const currentCard = event.target;
   const popupImage = document.querySelector('.popup__image');
   if (currentCard.classList.contains('place-card__image')) {
+
     const image = currentCard.getAttribute('data-image')
      popupImage.setAttribute('src', image);
 
@@ -240,14 +248,3 @@ formEdit.addEventListener('submit', changePerson);
 addPhoto();
 
 
-// Здравствуйте
-
-
-//+++ В форму редактирования данных юзера должна подставляться актуальная информация, но не в плейсхолдеры,
-// а в инпуты. //  пока не понял как сделать короче, сделал отдельную функцию 
-
-//++ Если вызвать ошибку валидации на инпуте (появится текст ошибки) и просто закрыть
-// крестиком форму, то тогда при ее повторном открытии остается залипший текст ошибок.
-// Этого быть не должно.   +исправил, теперь работает
-
-// Это надо исправить.
