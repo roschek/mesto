@@ -118,7 +118,7 @@ function changePerson(event) {
   event.preventDefault();
   const userName = document.querySelector('.user-info__name');
   const userDescription = document.querySelector('.user-info__job');
-  const { pers, description } = formEdit.elements
+  const { pers, description} = formEdit.elements
   userName.textContent = pers.value;
   userDescription.textContent = description.value;
   formEdit.reset();
@@ -126,6 +126,13 @@ function changePerson(event) {
   
 }
 
+function cardValue(){
+  const name = document.querySelector('.user-info__name').innerHTML;
+  const profession = document.querySelector('.user-info__job').innerHTML;
+  const { pers, description} = formEdit.elements
+  pers.value=name;
+  description.value=profession;
+}
 
 // создание карточки с фоткой
 
@@ -222,6 +229,7 @@ placesList.addEventListener('click', function (event) {
 form.addEventListener('input', handlerInputForm, true);
 formEdit.addEventListener('input', handlerInputForm, true);
 buttonEdit.addEventListener('click', togglePopupEdit);
+buttonEdit.addEventListener('click',cardValue );
 button.addEventListener('click', togglePopup);
 popupClose.addEventListener('click', togglePopup,);
 popupCloseEdit.addEventListener('click', togglePopupEdit,);
@@ -235,11 +243,11 @@ addPhoto();
 // Здравствуйте
 
 
-// В форму редактирования данных юзера должна подставляться актуальная информация, но не в плейсхолдеры,
-// а в инпуты.
+//+++ В форму редактирования данных юзера должна подставляться актуальная информация, но не в плейсхолдеры,
+// а в инпуты. //  пока не понял как сделать короче, сделал отдельную функцию 
 
 //++ Если вызвать ошибку валидации на инпуте (появится текст ошибки) и просто закрыть
 // крестиком форму, то тогда при ее повторном открытии остается залипший текст ошибок.
-// Этого быть не должно.
+// Этого быть не должно.   +исправил, теперь работает
 
 // Это надо исправить.
