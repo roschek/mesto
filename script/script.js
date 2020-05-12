@@ -19,21 +19,26 @@ const errorMessages = {
 
 function handlerInputForm(evt) {
   const submit = evt.currentTarget.querySelector('.button');
+ 
   // Надо исправить
-  //+++ Здесь тоже не только инпуты, но и кнопка
-  if(evt.currentTarget.elements!== submit ){
-  const [...inputs] = evt.currentTarget.elements;
+  // Здесь тоже не только инпуты, но и кнопка
+  // Не так поняли
   
-  isFieldValid(evt.target);
+    //+++ В этом массиве инпуты и кнопка
+    // Сюда надо только инпуты добавить из формы
+    const [...inputs] = evt.currentTarget.querySelectorAll('input')
+     
+    isFieldValid(evt.target);
+    
 
-  if (inputs.every(isValidate)) {
-    setSubmitButtonState(submit, true);
-  } else {
-    setSubmitButtonState(submit, false);
+    if (inputs.every(isValidate)) {
+      setSubmitButtonState(submit, true);
+    } else {
+      setSubmitButtonState(submit, false);
 
+    }
   }
-  }
-}
+
 
 // функция проверки
 function isValidate(input) {
@@ -62,30 +67,13 @@ function isValidate(input) {
 
 // вкл/выкл ошибки со слушателя
 function isFieldValid(input) {
-  // Надо исправить
-  //++ parentNode -- это хардкод, сломается сразу при любом изменении верстки
-  const errorForm = input.closest('form')// Лучше, например, через closest найти форму и в ней найти уже этот элемент по селектору
+
+  const errorForm = input.closest('form');
+
   const errorElem = errorForm.querySelector(`#${input.id}-error`);
   const valid = isValidate(input); // устанавливаем инпуту кастомные ошибки, если они есть.
   errorElem.textContent = input.validationMessage;
   console.log(errorForm);
-  return valid;
-}
-
-
- //проверки формы на валидность
- 
-function isFormValid() { // validateForm
-
-  const inputs = document.querySelectorAll('input');
-
-  let valid = true;
-   
-  inputs.forEach((input) => {
-    if (!isFieldValid(input)) valid = false;
-
-  });
-  
   return valid;
 }
 
@@ -105,33 +93,41 @@ function togglePopup() {
   popup.classList.toggle('popup_is-opened');
   submitForm.setAttribute('disabled', true);
   form.reset();
+  cleanSpan();
 };
+
 function togglePopupEdit() {
   popupEdit.classList.toggle('popup_is-opened');
   submitFormEdit.setAttribute('disabled', true);
+  cleanSpan()
   formEdit.reset();
 }
 
 function togglePopupPhoto() {
   popupPhoto.classList.toggle('popup_is-opened');
 }
+//очищаем поля спанам
+function cleanSpan() {
+  const collector = document.querySelectorAll('span')
+  collector.forEach( function(element){
+    element.textContent = '';
+  })
+}
 
 // изменение названия карточки
-// Вот тут не соблюдается
 
-// ++ camelCase
 function changePerson(event) {
   event.preventDefault();
   const userName = document.querySelector('.user-info__name');
   const userDescription = document.querySelector('.user-info__job');
-  //++ Можно лучше
-  // Деструктуризация
   const { pers, description } = formEdit.elements
   userName.textContent = pers.value;
   userDescription.textContent = description.value;
   formEdit.reset();
-  togglePopupEdit()
+  togglePopupEdit();
+  
 }
+
 
 // создание карточки с фоткой
 
@@ -182,18 +178,15 @@ function addPhoto() {
     placesList.appendChild(photoArray);
   })
 }
-//+++/спасибо, разобрался, с for просто привычнее было, придется отвыкать/ Надо исправить
-// Вы меня простите, но на 7 спринте уже пора
-// использовать forEach без обращения к индексам
 
 // добавление карточек попапом
 
-function addNewPhoto() {
+function addNewPhoto(event) {
+  // event не передан
+  // надо исправить
   event.preventDefault();
   const { name, link } = form.elements;
-
   const cardContainer = createNewPhoto(name.value, link.value);
-
   placesList.appendChild(cardContainer);
   form.reset();
   togglePopup();
@@ -210,8 +203,6 @@ placesList.addEventListener('click', function (event) {
 
 placesList.addEventListener('click', function (event) {
 
-
-  //++ const!!!
   const currentCard = event.target;
 
 
@@ -225,16 +216,12 @@ placesList.addEventListener('click', function (event) {
 // eslint-disable-next-line prefer-arrow-callback
 placesList.addEventListener('click', function (event) {
 
-  //++ const
   const currentCard = event.target;
   const popupImage = document.querySelector('.popup__image');
   if (currentCard.classList.contains('place-card__image')) {
-    //++ Не надо длинного условия, проверьте -- в картинку попали?
-    //++ Супер, оставливаем всплытие события и выполняем все что вот дальше.
 
     const image = currentCard.getAttribute('data-image')
-    console.log(image)
-    popupImage.setAttribute('src', image);
+     popupImage.setAttribute('src', image);
 
     togglePopupPhoto();
   }
@@ -244,10 +231,12 @@ form.addEventListener('input', handlerInputForm, true);
 formEdit.addEventListener('input', handlerInputForm, true);
 buttonEdit.addEventListener('click', togglePopupEdit);
 button.addEventListener('click', togglePopup);
-popupClose.addEventListener('click', togglePopup);
-popupCloseEdit.addEventListener('click', togglePopupEdit);
-popupClosePhoto.addEventListener('click', togglePopupPhoto);
+popupClose.addEventListener('click', togglePopup,);
+popupCloseEdit.addEventListener('click', togglePopupEdit,);
+popupClosePhoto.addEventListener('click', togglePopupPhoto, );
+
 form.addEventListener('submit', addNewPhoto);
 formEdit.addEventListener('submit', changePerson);
 addPhoto();
+
 
