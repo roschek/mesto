@@ -9,7 +9,11 @@
 .popup__close-photo{
   position:relative;
   display: block;
- top:-270px;
+ top:-255px;
  left:0;
   
+}
+
+.popup__photo{
+  display: flex;
 }
