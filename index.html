@@ -71,14 +71,16 @@
         <h3 class="popup__title">Редактировать профиль</h3>
         <form id="person" class="popup__form" name="person" novalidate>
           <div class="input-container">
+
             <input id="pers" type="text" name="pers" class="popup__input popup__input_type_name" minlength="2"
-              maxlength="30" pattern="^[^\s]+(\s.*)?$" required >
+              maxlength="30" required >
             <span id="pers-error" class="form-error error">Это обязательное поле</span>
           </div>
           <div class="input-container">
             <input id="description" type="text" name="description" class="popup__input popup__input_type_link-url"
               minlength="2" maxlength="30" required pattern="^[^\s]+(\s.*)?$">
             <span id="description-error" class="form-error error" >Это обязательное поле</span>
+
           </div>
           <button id="submit-pers" class="button button__popup-edit">Сохранить</button>
         </form>
