@@ -30,12 +30,16 @@ function isValidate(input) {
     input.setCustomValidity(errorMessages.empty);
     return false
   }
+  if (input.value.trim().length === 0) {
+    input.setCustomValidity(errorMessages.empty);
+    return false
 
+  }
   if (input.validity.tooShort || input.validity.tooLong) {
     input.setCustomValidity(errorMessages.wrongLength);
     return false
   }
-  if (input.validity.typeMismatch) {
+  if (input.validity.typeMismatch && input.type === 'url') {
 
     input.setCustomValidity(errorMessages.wrongUrl);
     return false
@@ -69,15 +73,11 @@ function setSubmitButtonState(button, state) {
   }
 }
 
-function handlerInputForm(inputs, submit) {
-  /*const submit = evt.currentTarget.querySelector('.button');
-  // Можно лучше
-  // spread оператор не нужен
-  const [...inputs] = evt.currentTarget.querySelectorAll('input')*/
-  /*isFieldValid(evt.target);*/
-  inputs.forEach(isFieldValid);
+function handlerInputForm(evt, submit) {
+  isFieldValid(evt.target);
 
-  if (inputs.every(isValidate)) {
+  const currentForm = evt.currentTarget;
+  if (currentForm.checkValidity()) {
 
     setSubmitButtonState(submit, true);
   } else {
@@ -86,29 +86,16 @@ function handlerInputForm(inputs, submit) {
   }
 }
 
-// Этот метод должен вызваться один раз для каждой формы, которую вы хотите валидировать
-// Он не прикрепляется к событию
 function checkForm(form) {
-  // Кнопку получили, отлично
-  // Только currentTarget уберите, он и тут и у массива ни к чему совсем
   const submit = form.querySelector('.button');
-  // Массив получили, но не пойму почему не простое присвоение а через [...]
-  const [...inputs] = form.querySelectorAll('input')
- console.log(inputs,submit);
-  form.addEventListener('input',()=>handlerInputForm(inputs,submit))
-  // Теперь на полученную форму установите слушатель события input
-  // Обработчиком будет являться
-  // () => handlerInputForm(inputs, submit)
-  
-  // Таким образом форма будет слушать событие ввода, как только оно произойдет,
-  // обработчик пробежит по инпутам, проверит форму и кнопку приведет в соответствие.
-  // Этим методом вы легко прикрутите валидацию ко второй форме, его просто вызвать достаточно передав туда
-  // объект формы для карты.
+
+  form.addEventListener('input', (evt) => handlerInputForm(evt, submit))
 }
 
-// ++Можно лучше
-//++ Чистите ошибки а не спаны все же, имя лучше другое
+
 function cleanError() {
+  // Можно лучше
+  // (element) => {...}
   collector.forEach(function (element) {
     element.textContent = '';
   })
@@ -117,6 +104,7 @@ function cleanError() {
 function togglePopup() {
   popup.classList.toggle('popup_is-opened');
   submitForm.setAttribute('disabled', true);
+  submitForm.classList.remove('popup__button_valid')
   form.reset();
   cleanError();
 };
@@ -130,6 +118,9 @@ function togglePopupEdit() {
 
 function togglePopupPhoto() {
   popupPhoto.classList.toggle('popup_is-opened');
+  submitFormEdit.setAttribute('disabled', true);
+  cleanError()
+  formEdit.reset();
 }
 
 
@@ -155,6 +146,8 @@ function cardValue() {
   description.value = profession;
   submitFormEdit.removeAttribute('disabled');
   submitFormEdit.classList.add(`popup__button_valid`);
+  submitForm.removeAttribute('disabled');
+  submitForm.classList.add(`popup__button_valid`);
 }
 
 // создание карточки с фоткой
@@ -248,20 +241,6 @@ placesList.addEventListener('click', function (event) {
   }
 });
 
-// Надо исправить
-// Заведите метод, который на вход получает форму.
-// Метод внутри себя ставит на нее обработчик input.
-// Обработчик выбирает из формы массив инпутов и кнопку, вызывает handlerInputForm и передает ему массив и кнопку.
-// Теперь при каждом нажатии клавиши не надо выбирать все инпуты из формы заново.
-// Вызовете этот метод для двух форм = профит!
-
-// спасибо, вроде начал немного понимать, хотя не уверен что правильно...
-
-// Пока неправильно. Этот метод не должен быть обработчиком. Он вызывается один раз с переданным в него параметром
-// Если надо другую форму валидировать, то вызовете его еще раз с другим параметром.
-
-//form.addEventListener('input', checkForm, true);
-//formEdit.addEventListener('click', checkForm, true);
 
 buttonEdit.addEventListener('click', togglePopupEdit);
 buttonEdit.addEventListener('click', cardValue);
@@ -276,9 +255,23 @@ addPhoto();
 checkForm(form);
 checkForm(formEdit);
 
-//ствуйте
+// Добрый день!
 
-// Надо исправить
-// Валидация не работает сейчас. См. комментарии в коде.
+// Рад что вы собрали волю в кулак и все поправили!
 
-// Исправьте, и присылайте.
+// ## Итог:
+
+// - Код работает, нет синтаксических и других ошибок
+// - Добавлена кнопка Edit, по нажатию она открывает попап редактирования профиля
+// - Форма редактирования профиля умеет редактировать соответствующие поля страницы — имя и о себе
+// - По клику на картинку карточки, соответствующая фотография открывается в попапе
+// - В формах редактирования профиля и добавления новой карточки кнопки сабмита должны заблокированы
+//   если хотя бы одно из полей форм пустое
+// - В форме редактирования профиля работает лайв-валидация
+// - Валидация полей описана одной функцией
+// - Форма и ошибки сбрасываются после отправки данных
+// - Нарушение DRY (Дублирование больших фрагментов кода)
+// - Функции, декларированные как `function functionName() {}` не вызываются до того, как были объявлены
+// - Сделано дополнительное задание
+
+// Работа принята
