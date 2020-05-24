@@ -73,9 +73,9 @@ class FormValid {
   
 
   handlerInputForm(evt,submit) {
-    isFieldValid(evt.target);
+    isFieldValid(this.form);
   
-    const currentForm =evt.currentTarget;;
+    const currentForm =evt.currentTarget;
     if (currentForm.checkValidity()) {
   
       setSubmitButtonState(submit, true);
@@ -86,9 +86,9 @@ class FormValid {
   }
   
    checkForm() {
-    const submit = this.form.querySelector('.button');
-    this.setEventListeners('input', (evt) => handlerInputForm(evt,submit))
-    //form.addEventListener('input', (evt) => handlerInputForm(evt,submit))
+   
+    this.setEventListeners('input', (evt) => handlerInputForm(evt,this.submit))
+    
     
   }
 }

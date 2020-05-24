@@ -70,6 +70,10 @@ const formValid = new FormValid(formEdit, errorMessages);
 const newCard = new UserInfo(formEdit);
 
 
+
+
+
+
 //слушатели 
 formEdit.addEventListener('submit', newCard.changePerson);
 form.addEventListener('submit', cardlist.addCard);
@@ -84,7 +88,7 @@ formCardVal.checkForm()
 /*
 Надо сделать:
 
-валидация работает частично, текст ошибки не меняется
+валидация работает но текст ошибки не меняется
 */
 
 
