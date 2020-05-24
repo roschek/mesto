@@ -15,6 +15,8 @@ const submitFormEdit = document.querySelector('.button__popup-edit');
 const popup = new Popup(document.querySelector('.popup'),openPopup,popupClose,submitForm)
 const popupEdit = new Popup(document.querySelector('.popup__edit'),openPopupEdit,popupCloseEdit,submitFormEdit)
 const popPhoto = new Popup(document.querySelector('.popup__photo'),document.querySelector('.popup__image'),popupClosePhoto)
+const cardlist = new CardList(document.querySelector('.places-list'))
+
 
 const form = document.forms.new;
 const formEdit = document.forms.person;
@@ -24,7 +26,7 @@ const errorMessages = {
   wrongLength: 'Должно быть от 2 до 30 символов',
   wrongUrl: 'Здесь должна быть ссылка',
 }
-const cardlist = new CardList(document.querySelector('.places-list'))
+
 cardlist.render(initialCards);
 
 
@@ -68,28 +70,27 @@ formValid.setEventListeners()
 //Меняем название карточки
 
 const newCard = new UserInfo(formEdit);
-formEdit.addEventListener('submit', newCard.changePerson);
+
 
 cardValue()
 
 
 
 //слушатели 
-
+formEdit.addEventListener('submit', newCard.changePerson);
 form.addEventListener('submit', cardlist.addCard);
 placesList.addEventListener('click',popPhoto.openPhoto)
 popupClosePhoto.addEventListener('click',popPhoto.delPhoto())
 formEdit.addEventListener('submit',cardValue)
-formEdit.addEventListener('submit',cleanError)
-form.addEventListener('submit',cleanError)
+form.addEventListener('submit',cardValue)
 
 
-/*checkForm(form);
-checkForm(formEdit);*/
+
+
 /*
 Надо сделать:
 
-валидация!!!!
+валидация работает частично, текст ошибки не меняется, кнопка правого инпута не меняет цвет
 */
 
 

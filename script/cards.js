@@ -1,40 +1,40 @@
 const initialCards = [
   {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    name: 'Кофе',
+    link: 'https://i.pinimg.com/564x/1e/7c/21/1e7c215e90ed676bb0a277b0cc1eb4ee.jpg'
   },
   {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    name: 'Шарик',
+    link: 'https://i.pinimg.com/564x/fd/fc/35/fdfc35f8ba51749730f6d18058654be4.jpg'
   },
   {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    name: 'Красивые места',
+    link: 'https://i.pinimg.com/564x/41/52/6c/41526cb6b750a21eaadac2f8941a2c41.jpg'
   },
 
   {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    name: 'Это Питер',
+    link: 'https://i.pinimg.com/564x/81/8e/87/818e87e93ba389af1b1220f71c682ba7.jpg'
   },
   {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    name: 'ну-ну',
+    link: 'https://i.pinimg.com/564x/15/8b/29/158b295b315a7fb6c4deabfe31a48661.jpg'
   },
   {
-    name: 'Нургуш',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/khrebet-nurgush.jpg'
+    name: 'Programmer',
+    link: 'https://i.pinimg.com/564x/5b/03/88/5b0388f5e21eba59b1384e7d81abef7a.jpg'
   },
   {
-    name: 'Тулиновка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/tulinovka.jpg'
+    name: 'Debugging',
+    link: 'https://i.pinimg.com/564x/d9/57/c8/d957c892161a09e548dcd16da26f17a5.jpg'
   },
   {
-    name: 'Остров Желтухина',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/zheltukhin-island.jpg'
+    name: 'Настоящий пионер',
+    link: 'https://i.pinimg.com/564x/e1/18/01/e11801a75a32c34cdeb58c80d272d097.jpg'
   },
   {
-    name: 'Владивосток',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/vladivostok.jpg'
+    name: 'Лечимся',
+    link: 'https://i.pinimg.com/564x/43/3d/38/433d385dc81197ba53b40c92794bcc62.jpg'
   },
   {
     name: 'Плакатик',
