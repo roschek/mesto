@@ -70,16 +70,13 @@ const formValid = new FormValid(formEdit, errorMessages);
 const newCard = new UserInfo(formEdit);
 
 
-cardValue()
-
-
-
 //слушатели 
 formEdit.addEventListener('submit', newCard.changePerson);
 form.addEventListener('submit', cardlist.addCard);
 placesList.addEventListener('click',popPhoto.openPhoto)
 popupClosePhoto.addEventListener('click',popPhoto.delPhoto())
-
+openPopup.addEventListener('click',cardValue)
+openPopupEdit.addEventListener('click',cardValue)
 
 formValid.checkForm()
 formCardVal.checkForm()
