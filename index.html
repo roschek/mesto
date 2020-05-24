@@ -27,21 +27,7 @@
     </div>
     <div class="places-list root__section">
 
-      <!-- Пример вёрстки карточки: -->
-
-      <div class="place-card">
-        <div class="place-card__image"
-          data-image="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg"
-          style="background-image: url(https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg)">
-          <button class="place-card__delete-icon"></button>
-        </div>
-        <div class="place-card__description">
-          <h3 class="place-card__name">Камчатка</h3>
-          <button class="place-card__like-icon"></button>
-        </div>
-      </div>
-
-      <!-- конец примера. -->
+       
 
     </div>
     <div class="popup">
@@ -71,16 +57,14 @@
         <h3 class="popup__title">Редактировать профиль</h3>
         <form id="person" class="popup__form" name="person" novalidate>
           <div class="input-container">
-
             <input id="pers" type="text" name="pers" class="popup__input popup__input_type_name" minlength="2"
-              maxlength="30" required >
+              maxlength="30"  required >
             <span id="pers-error" class="form-error error">Это обязательное поле</span>
           </div>
           <div class="input-container">
             <input id="description" type="text" name="description" class="popup__input popup__input_type_link-url"
-              minlength="2" maxlength="30" required pattern="^[^\s]+(\s.*)?$">
+              minlength="2" maxlength="30" required ">
             <span id="description-error" class="form-error error" >Это обязательное поле</span>
-
           </div>
           <button id="submit-pers" class="button button__popup-edit">Сохранить</button>
         </form>
@@ -96,8 +80,14 @@
     </div>
 
   </div>
-  <script src="script/cards.js"></script>
+  
+  <script src="script/cardsArray.js"></script>
   <script src="script/script.js"></script>
+  <script src="script/Card.js"></script>
+  <script src="script/CardList.js"></script>
+  <script src="script/Popup.js"></script>
+  <script src="script/UserInfo.js"></script>
+  <script src="script/FormValidator.js"></script>
 </body>
 
 </html>
