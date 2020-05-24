@@ -1,23 +1,26 @@
 class UserInfo{
-constructor(form){
-  this.form = form
+  constructor(form){
+    this.form = form;
+  }
+  
+  setFormListener(){
+    this
+        .form
+        .querySelector('.button')
+        .addeventListener('click',this.changePerson)
+  }
+
+  changePerson(event) {
+    event.preventDefault();
+    const userName = document.querySelector('.user-info__name');
+    const userDescription = document.querySelector('.user-info__job');
+    const { pers, description } = this.elements
+
+    userName.textContent = pers.value;
+    userDescription.textContent = description.value;
+    
+    this.reset();
+
 }
 
-changePerson(evt){
-  evt.preventDefault();
-  this.form.addEventListener('submit', function(){
-  const userName = document.querySelector('.user-info__name');
-  const userDescription = document.querySelector('.user-info__job');
-  const { pers, description } = formEdit.elements
-  userName.textContent = pers.value;
-  userDescription.textContent = description.value;
-  console.log('х.з что дальше делать')
-  formEdit.reset();})
 }
-
-
-}
-
-const userInfo = new UserInfo();
-
-userInfo.changePerson(formEdit);

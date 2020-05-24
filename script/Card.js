@@ -45,11 +45,7 @@ class Card {
       .photoCard
       .querySelector('.place-card__delete-icon')
       .addEventListener('click', this.delete)
-
-    this
-      .photoCard
-      .querySelector('.place-card__image')
-      .addEventListener('click', this.open)
+  
     
   }
 
@@ -68,22 +64,4 @@ class Card {
     };
   }
 
-  open(event) {
-    const currentCard = event.target;
-    const popupImage = document.querySelector('.popup__image');
-    const popupPhoto = document.querySelector('.popup__photo');
-    popupPhoto.addEventListener('click', function () {
-      popupPhoto.classList.toggle('popup_is-opened')
-    })
-    if (currentCard.classList.contains('place-card__image')) {
-      const image = currentCard.getAttribute('data-image')
-      popupImage.setAttribute('src', image);
-      popupPhoto.classList.toggle('popup_is-opened');
-      
-
-  }
 }
-}
-
-
-

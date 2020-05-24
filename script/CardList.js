@@ -11,7 +11,7 @@ class CardList {
     const cardContainer = new Card(name.value, link.value);
     placesList.appendChild(cardContainer.createNewPhoto());
     cardContainer.setEventListeners();
-        
+    this.reset()    
   };
 
 
@@ -24,12 +24,5 @@ class CardList {
     })
 
   }
-  
-}
 
-const form = document.forms.new;
-const cardlist = new CardList(document.querySelector('.places-list'))
-
-cardlist.render(initialCards);
-
-form.addEventListener('submit', cardlist.addCard);
+  }
