@@ -9,9 +9,10 @@ class FormValid {
     this.submit = this.form.querySelector('.button')
   }
 
-  isValidate () {
+  isValidate (input) {
     
     input.setCustomValidity(""); 
+
       if (input.validity.valueMissing) {
         input.setCustomValidity(this.errors.empty);
         return false
@@ -63,11 +64,11 @@ class FormValid {
   }
 
   isFieldValid(input) {
-    const errorForm = this.input
+    const errorForm = input.form
     const errorElem = errorForm.querySelector(`#${input.id}-error`);
     const valid = isValidate(input); // устанавливаем инпуту кастомные ошибки, если они есть.
     errorElem.textContent = input.validationMessage;
- this.form.setEventListeners()
+
     return valid;
   }
   
