@@ -20,7 +20,7 @@ const cardlist = new CardList(document.querySelector('.places-list'))
 
 const form = document.forms.new;
 const formEdit = document.forms.person;
-const collector = document.querySelectorAll('.error')
+//const collector = document.querySelectorAll('.error')
 const errorMessages = {
   empty: 'Это обязательное поле',
   wrongLength: 'Должно быть от 2 до 30 символов',
@@ -42,27 +42,18 @@ popupEdit.close(popupEdit)
 
 
 function cardValue() {
+  
   const name = document.querySelector('.user-info__name').innerHTML;
   const profession = document.querySelector('.user-info__job').innerHTML;
   const { pers, description } = formEdit.elements
   pers.value = name;
   description.value = profession;
-  submitFormEdit.removeAttribute('disabled');
-  submitFormEdit.classList.add(`popup__button_valid`);
-  submitForm.removeAttribute('disabled');
-  submitForm.classList.add(`popup__button_valid`);
   
-}
-
-function cleanError() {
-  collector.forEach(function (element) {
-    element.textContent = '';
-  })
-}
+  }
 
 //валидация
-const formCardVal = new FormValid(form, errorMessages);
-const formValid = new FormValid(formEdit, errorMessages);
+const formVal = new FormValid(form, errorMessages);
+const formEditVal = new FormValid(formEdit, errorMessages);
 
 
 //Меняем название карточки
@@ -70,20 +61,14 @@ const formValid = new FormValid(formEdit, errorMessages);
 const newCard = new UserInfo(formEdit);
 
 
-
-
-
-
 //слушатели 
 formEdit.addEventListener('submit', newCard.changePerson);
 form.addEventListener('submit', cardlist.addCard);
 placesList.addEventListener('click',popPhoto.openPhoto)
 popupClosePhoto.addEventListener('click',popPhoto.delPhoto())
-openPopup.addEventListener('click',cardValue)
 openPopupEdit.addEventListener('click',cardValue)
-
-formValid.checkForm()
-formCardVal.checkForm()
+submitForm.addEventListener('click',formVal.checkForm())
+submitFormEdit.addEventListener('click',formEditVal.checkForm())
 
 /*
 Надо сделать:
