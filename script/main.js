@@ -66,9 +66,10 @@ formEdit.addEventListener('submit', newCard.changePerson);
 form.addEventListener('submit', cardlist.addCard);
 placesList.addEventListener('click',popPhoto.openPhoto)
 popupClosePhoto.addEventListener('click',popPhoto.delPhoto())
+
 openPopupEdit.addEventListener('click',cardValue)
-submitForm.addEventListener('click',formVal.checkForm())
-submitFormEdit.addEventListener('click',formEditVal.checkForm())
+formVal.checkForm()
+formEditVal.checkForm()
 
 /*
 Надо сделать:

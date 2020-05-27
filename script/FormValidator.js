@@ -9,9 +9,9 @@ class FormValid {
     this.submit = this.form.querySelector('.button')
   }
 
-  isValidate(inputs) {
- inputs.forEach((input)=>{
-    input.setCustomValidity("");
+  isValidate(input) {
+
+    input.setCustomValidity('');
 
     if (input.validity.valueMissing) {
       input.setCustomValidity(this.errors.empty);
@@ -35,7 +35,7 @@ class FormValid {
     return input.checkValidity();
 
 
-  })}
+  }
 
 
   // чтобы делать кнопку сабмита активной и неактивной.
@@ -45,8 +45,10 @@ class FormValid {
       this.submit.removeAttribute('disabled', true);
       this.submit.classList.add(`popup__button_valid`);
       this.submit.classList.remove(`popup__button_invalid`);
+      this.formInputs.forEach((input) => { input.textContent = ' ' })
 
     } else {
+
       this.submit.setAttribute('disabled', true);
       this.submit.classList.add(`popup__button_invalid`);
       this.submit.classList.remove(`popup__button_valid`);
@@ -58,33 +60,29 @@ class FormValid {
 
   setEventListeners() {
     this.form.addEventListener("input", () => {
+      this.isFieldValid();
       this.setSubmitButtonState();
     });
   }
 
-  isFieldValid(input) {
-    
-    const errorForm = input
-    const errorElem = errorForm.querySelector(`#${input.id}-error`);
-    const valid = isValidate(input); // устанавливаем инпуту кастомные ошибки, если они есть.
-    errorElem.textContent = input.validationMessage;
+  isFieldValid() {
+    console.log(this.formInputs)
+    this.formInputs.forEach((input) => {
+      const errorElem = input.nextElementSibling;
+      const valid = this.isValidate(input); // устанавливаем инпуту кастомные ошибки, если они есть.
+      errorElem.textContent = input.validationMessage;
 
-    return valid;
-  }
-
-  cleanError() {
-    collector.forEach(function (element) {
-      element.textContent = '';
+      return valid;
     })
   }
 
   handlerInputForm(submit) {
-    isFieldValid(this.formInputs);
-
 
     if (this.form.checkValidity()) {
 
       setSubmitButtonState(submit, true);
+      this.errors.forEach((elt) => { elt.textContent = ' ' })
+
     } else {
       setSubmitButtonState(submit, false);
 

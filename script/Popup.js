@@ -4,6 +4,7 @@ class Popup {
     this.bttn = bttn;
     this.bttnClose = bttnClose;
     this.submit = submit;
+    
   }
 
 
@@ -16,16 +17,16 @@ class Popup {
   }
 
   close(evt) {
-   
+    
     evt.bttnClose.addEventListener('click', function () {
       evt.container.closest('.popup').classList.remove('popup_is-opened');
-
+     
     })
     evt.submit.addEventListener('click', function () {
       evt.container.closest('.popup').classList.remove('popup_is-opened');
-
+      
     })
-
+    
   }
 
   delPhoto(){
