@@ -3,33 +3,28 @@ class FormValid {
     this.form = form;
     this.errors = errors;
 
-    this.isValidate = this.isValidate.bind(this);
+    this.isValid = this.isValid.bind(this);
     this.setEventListeners = this.setEventListeners.bind(this);
     this.formInputs = Array.from(this.form.querySelectorAll("input"));
     this.submit = this.form.querySelector('.button')
   }
 
-  isValidate(input) {
+  isValid(input) {
 
     input.setCustomValidity('');
 
-    if (input.validity.valueMissing) {
+    if (input.validity.valueMissing||input.value.trim().length === 0) {
       input.setCustomValidity(this.errors.empty);
-      return false
-    }
-    if (input.value.trim().length === 0) {
-      input.setCustomValidity(this.errors.empty);
-      return false
-
+      
     }
     if (input.validity.tooShort || input.validity.tooLong) {
       input.setCustomValidity(this.errors.wrongLength);
-      return false
+      
     }
     if (input.validity.typeMismatch && input.type === 'url') {
 
       input.setCustomValidity(this.errors.wrongUrl);
-      return false
+      
     }
 
     return input.checkValidity();
@@ -48,14 +43,12 @@ class FormValid {
       this.formInputs.forEach((input) => { input.textContent = ' ' })
 
     } else {
-
-      this.submit.setAttribute('disabled', true);
+      this.submit.setAttribute('disabled', '');
       this.submit.classList.add(`popup__button_invalid`);
       this.submit.classList.remove(`popup__button_valid`);
 
     }
   }
-
 
 
   setEventListeners() {
@@ -66,10 +59,9 @@ class FormValid {
   }
 
   isFieldValid() {
-    console.log(this.formInputs)
     this.formInputs.forEach((input) => {
       const errorElem = input.nextElementSibling;
-      const valid = this.isValidate(input); // устанавливаем инпуту кастомные ошибки, если они есть.
+      const valid = this.isValid(input); // устанавливаем инпуту кастомные ошибки, если они есть.
       errorElem.textContent = input.validationMessage;
 
       return valid;

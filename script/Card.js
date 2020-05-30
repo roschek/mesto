@@ -6,7 +6,7 @@ class Card {
   }
 
   createNewPhoto() {
-
+    
     const cardContainer = document.createElement('div');
     const cardImageElement = document.createElement('div');
     const deleteIconElement = document.createElement('button');
@@ -29,11 +29,14 @@ class Card {
     cardContainer.appendChild(cardDescription);
     cardDescription.appendChild(cardNameElement);
     cardDescription.appendChild(likeIconElement);
-
+    
     this.photoCard = cardContainer;
 
+    this.setEventListeners();
+    
     return cardContainer;
   };
+ 
   setEventListeners() {
     this
       .photoCard
@@ -50,18 +53,12 @@ class Card {
   }
 
   like(event) {
-    const currentCard = event.target;
-    if (currentCard.classList.contains('place-card__like-icon')) {
       event.target.classList.toggle('place-card__like-icon_liked');
-    }
   }
 
 
   delete(event) {
-    const currentCard = event.target;
-    if (currentCard.classList.contains('place-card__delete-icon')) {
-      currentCard.closest('.place-card').remove();
+      event.target.closest('.place-card').remove();
     };
   }
 
-}

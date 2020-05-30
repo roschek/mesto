@@ -1,4 +1,5 @@
 class Popup {
+  
   constructor(container, bttn, bttnClose, submit) {
     this.container = container;
     this.bttn = bttn;
@@ -17,12 +18,14 @@ class Popup {
   }
 
   close(evt) {
-    
+   
     evt.bttnClose.addEventListener('click', function () {
+      
       evt.container.closest('.popup').classList.remove('popup_is-opened');
      
     })
     evt.submit.addEventListener('click', function () {
+         
       evt.container.closest('.popup').classList.remove('popup_is-opened');
       
     })
@@ -43,9 +46,7 @@ class Popup {
     this.container = document.querySelector('.popup__image');
     const popupPhoto = document.querySelector('.popup__photo');
     
-    
     if (evt.target.classList.contains('place-card__image')) {
-
       const image = evt.target.getAttribute('data-image')
       this.container.setAttribute('src', image);
       popupPhoto.classList.toggle('popup_is-opened');
@@ -53,10 +54,10 @@ class Popup {
     }
    
   }
-  
+}
   
 
-}
+
 
 
 

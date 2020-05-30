@@ -1,28 +1,22 @@
 
 class CardList {
   constructor(container) {
-    this.container = container
-    this.cardsArr = []
+    this.container = container;
   }
 
-  addCard(event){
-    event.preventDefault();
-    const { name, link } = form.elements;
-    const cardContainer = new Card(name.value, link.value);
-    placesList.appendChild(cardContainer.createNewPhoto());
-    cardContainer.setEventListeners();
-    this.reset()    
-  };
+  addCard(elem) {
 
-
-  render(cardsArray) {
-    const placesList = document.querySelector('.places-list');
-    cardsArray.forEach(function (elem) {
-      const card = new Card(elem.name, elem.link);
-      placesList.appendChild(card.createNewPhoto());
-      card.setEventListeners();
-    })
-
+    this.container.appendChild(elem);
+    
   }
+  
+  render(cards) {
+    
+    cards.forEach(element => {
+      this.addCard(element);
+     
+    });
+  }
+
 
   }
