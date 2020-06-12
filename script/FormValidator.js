@@ -2,7 +2,7 @@ class FormValid {
   constructor(form, errors) {
     this.form = form;
     this.errors = errors;
-
+    this.errorElement = this.form.querySelectorAll('.error');
     this.isValid = this.isValid.bind(this);
     this.setEventListeners = this.setEventListeners.bind(this);
     this.formInputs = Array.from(this.form.querySelectorAll("input"));
@@ -32,21 +32,20 @@ class FormValid {
 
   }
 
-
   // чтобы делать кнопку сабмита активной и неактивной.
-  setSubmitButtonState() {
+  setSubmitButtonState(state) {
 
-    if (this.form.checkValidity() === true) {
+    if (state) {
       this.submit.removeAttribute('disabled', true);
       this.submit.classList.add(`popup__button_valid`);
       this.submit.classList.remove(`popup__button_invalid`);
       this.formInputs.forEach((input) => { input.textContent = ' ' })
-
+  
     } else {
       this.submit.setAttribute('disabled', '');
       this.submit.classList.add(`popup__button_invalid`);
       this.submit.classList.remove(`popup__button_valid`);
-
+  
     }
   }
 
@@ -58,34 +57,31 @@ class FormValid {
     });
   }
 
-  isFieldValid() {
-    this.formInputs.forEach((input) => {
-      const errorElem = input.nextElementSibling;
-      const valid = this.isValid(input); // устанавливаем инпуту кастомные ошибки, если они есть.
-      errorElem.textContent = input.validationMessage;
-
-      return valid;
-    })
-  }
-
-  handlerInputForm(submit) {
-
-    if (this.form.checkValidity()) {
-
-      setSubmitButtonState(submit, true);
-      this.errors.forEach((elt) => { elt.textContent = ' ' })
-
-    } else {
-      setSubmitButtonState(submit, false);
-
+  isFieldValid(input) {
+    const errorElem = input.nextElementSibling;
+    const valid = this.isValid(input)
+    errorElem.textContent = input.validationMessage
+    return valid
     }
+  
+
+  handlerInputForm(evt) {
+   this.isFieldValid(evt.target);
+    
+   if(this.form.checkValidity()){
+     this.setSubmitButtonState(true);
+   } else {
+     this.setSubmitButtonState(false)
+   }
   }
 
-  checkForm() {
-
-    this.setEventListeners('input', () => handlerInputForm(this.submit))
-
+  setEventListeners() {
+    this.form.addEventListener('input',(evt)=> this.handlerInputForm(evt))
   }
+
+   resetError(){
+     this.errorElement.forEach((elt)=>{elt.textContent = ' '})
+   }
 }
 
 
