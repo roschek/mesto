@@ -18,8 +18,6 @@ class Api {
     })
   }
 
-
-
   getInitialCards() {
     return fetch(`${this.url}/cards`, {
       headers: this.headers
@@ -89,7 +87,7 @@ class Api {
       })
   }
 
-  // пока не работает: если загружаю количество лайков - ломается добавление карточки, пытается на новой карточке загрузить количество лайков и пишет undefined естественно.. пока не пойму как решать
+  
   cardLike(id) {
     return fetch(`${this.url}/cards/like/${id}`,
       {
