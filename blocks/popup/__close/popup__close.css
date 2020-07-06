@@ -6,10 +6,12 @@
   cursor: pointer;
 }
 
-.popup__close-photo{
-  position:relative;
+.popup__close-photo {
+  position: relative;
   display: block;
- top:-270px;
- left:0;
-  
+  left:100%;
+}
+
+.popup__photo {
+  display: flex;
 }
