@@ -18,8 +18,8 @@
       <div class="user-info">
         <div class="user-info__photo"></div>
         <div class="user-info__data">
-          <h1 class="user-info__name">Jaques Causteau</h1>
-          <p class="user-info__job">Sailor, Researcher</p>
+          <h1 class="user-info__name"></h1>
+          <p class="user-info__job"></p>
           <button class="button__edit">Edit</button>
         </div>
         <button class="button user-info__button">+</button>
@@ -33,7 +33,7 @@
       <!-- конец примера. -->
 
     </div>
-    <div class="popup">
+    <div class="popup popup__card">
       <div class="popup__content">
         <img src="images/close.svg" alt="" class="popup__close">
         <h3 class="popup__title">Новое место</h3>
@@ -41,12 +41,12 @@
           <div class="input-container">
             <input id="name" type="text" name="name" class="popup__input popup__input_type_name input__new"
               placeholder="Название" minlength="2" maxlength="30" required>
-            <span id="name-error" class="form-error error">Это обязательное поле</span>
+            <span id="name-error" class="form-error error"></span>
           </div>
           <div class="input-container">
             <input id="link" type="url" name="link" class="popup__input popup__input_type_link-url input__new"
-              placeholder="Ссылка на картинку" minlength="2" maxlength="30" required>
-            <span id="link-error" class="form-error error">Это обязательное поле</span>
+              placeholder="Ссылка на картинку" minlength="2"  required>
+            <span id="link-error" class="form-error error"></span>
           </div>
           <button id="submit" class="button popup__button" disabled>+</button>
         </form>
@@ -61,35 +61,48 @@
         <form id="person" class="popup__form" name="person" novalidate>
           <div class="input-container">
             <input id="pers" type="text" name="pers" class="popup__input popup__input_type_name" minlength="2"
-              maxlength="30" pattern="^[^\s]+(\s.*)?$" required>
-            <span id="pers-error" class="form-error error">Это обязательное поле</span>
+              maxlength="30" required>
+            <span id="pers-error" class="form-error error"></span>
           </div>
           <div class="input-container">
             <input id="description" type="text" name="description" class="popup__input popup__input_type_link-url"
               minlength="2" maxlength="30" required ">
-            <span id=" description-error" class="form-error error">Это обязательное поле</span>
+            <span id=" description-error" class="form-error error"></span>
           </div>
-          <button id="submit-pers" class="button button__popup-edit" >Сохранить</button>
+          <button id="submit-pers" class="button button__popup-edit">Сохранить</button>
         </form>
       </div>
     </div>
 
     <!--див с фоточками-->
     <div class="popup popup__photo">
+      <div class="img__popup-container">
+
       <img src="#" alt="" class="popup__image">
       <img src="images/close.svg" alt="" class="popup__close popup__close-photo">
-
-
     </div>
 
   </div>
-  <script src="script/cards.js"></script>
-  <script src="script/Card.js"></script>
-  <script src="script/CardList.js"></script>
-  <script src="script/Popup.js"></script>
-  <script src="script/UserInfo.js"></script>
-  <script src="script/FormValidator.js"></script>
-  <script src="script/main.js"></script>
+
+    <!-- попап для смены аватарки-->
+
+    <div class="popup popup__avatar">
+      <div class="popup__content">
+        <img src="images/close.svg" alt="" class="popup__close popup__close-ava">
+        <h3 class="popup__title">Обновить аватар</h3>
+        <form id="avatar" class="popup__form" name="avatar" novalidate>
+          <div class="input-container">
+            <input id="ava" type="url" name="ava" class="popup__input popup__input-ava" minlength="2" maxlength="90"
+              placeholder="ссылка на картинку" required>
+            <span id=" ava-error" class="form-error error">Это обязательное поле</span>
+          </div>
+          <button class="button button__popup-ava" disabled>Сохранить</button>
+        </form>
+      </div>
+
+    </div>
+
+    <script type="module" src="src/index.js"></script>
 </body>
 
 </html>
