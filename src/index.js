@@ -1,10 +1,10 @@
-import {Api} from '../script/Api.js';
-import {Card} from '../script/Card.js';
-import {CardList} from '../script/CardList.js';
-import {FormValid} from '../script/FormValidator.js';
-import {Popup} from '../script/Popup.js';
-import {PopupPhoto} from '../script/PopupPhoto.js';
-import {UserInfo} from '../script/UserInfo.js';
+import {Api} from './script/Api.js';
+import {Card} from './script/Card.js';
+import {CardList} from './script/CardList.js';
+import {FormValid} from './script/FormValidator.js';
+import {Popup} from './script/Popup.js';
+import {PopupPhoto} from './script/PopupPhoto.js';
+import {UserInfo} from './script/UserInfo.js';
 import "./style.css";
 
 

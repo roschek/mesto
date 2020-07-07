@@ -1,0 +1,17 @@
+.popup__close {
+  width: 26px;
+  position: absolute;
+  top: -26px;
+  right: -26px;
+  cursor: pointer;
+}
+
+.popup__close-photo {
+  position: relative;
+  display: block;
+  left:100%;
+}
+
+.popup__photo {
+  display: flex;
+}

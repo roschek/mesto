@@ -1,0 +1,21 @@
+.button__edit {
+  display: block;
+  cursor: pointer;
+  font-size: 12px;
+  max-width: 38px;
+  min-height: 18px;
+  background-color: transparent;
+  border: 1px solid white;
+  color:white;
+  padding: 4px 7px;
+  margin-top:18px;
+}
+
+.button__edit:hover {
+  color: black;
+  background-color: white;
+}
+
+.button__edit:active {
+  box-shadow: inset 0 0 4px  grey;
+}
