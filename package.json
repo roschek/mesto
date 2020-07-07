@@ -4,7 +4,7 @@
   "description": "проект для курса Yandex.practikum, технологии HTML, CSS, JS<br>\r <a href=\"https://roschek.github.io/mesto/\">зайти на сайт</a>",
   "main": "index.js",
   "scripts": {
-    "build": "cross-env NODE_ENV=production rimraf dist && webpack --mode production",
+    "build": "rimraf dist && cross-env NODE_ENV=production webpack --mode production",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --mode development --open --watch",
     "deploy": "cross-env NODE_ENV=production gh-pages -d dist"
   },
