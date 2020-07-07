@@ -1,3 +1,4 @@
+<<<<<<< HEAD:src/blocks/popup/__close/popup__close.css
 .popup__close {
   width: 26px;
   position: absolute;
@@ -14,4 +15,22 @@
 
 .popup__photo {
   display: flex;
+=======
+.popup__close {
+  width: 26px;
+  position: absolute;
+  top: -26px;
+  right: -26px;
+  cursor: pointer;
+}
+
+.popup__close-photo {
+  position: relative;
+  display: block;
+  left:100%;
+}
+
+.popup__photo {
+  display: flex;
+>>>>>>> 88a787620dfaf1a99aafbe7d3212697a0429c5ee:blocks/popup/__close/popup__close.css
 }
