@@ -1,4 +1,4 @@
-<<<<<<< HEAD:src/blocks/place-card/__delete-icon/place-card__delete-icon.css
+
 .place-card__delete-icon {
   background: url(../../../images/trash-icon.svg) center no-repeat;
   background-color: transparent;
@@ -15,21 +15,3 @@
 .place-card:hover .place-card__delete-icon {
  
 }*/
-=======
-.place-card__delete-icon {
-  background: url(../../../images/trash-icon.svg) center no-repeat;
-  background-color: transparent;
-  border: none;
-  width: 18px;
-  height: 20px;
-  position: absolute;
-  top: 18px;
-  right: 15px;
-  cursor: pointer;
-  display: block;
-}
-/*
-.place-card:hover .place-card__delete-icon {
- 
-}*/
->>>>>>> 88a787620dfaf1a99aafbe7d3212697a0429c5ee:blocks/place-card/__delete-icon/place-card__delete-icon.css

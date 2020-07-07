@@ -1,3 +1,4 @@
+
 export class UserInfo {
   constructor(form, popupEdit) {
     this.form = form;

@@ -1,4 +1,4 @@
-<<<<<<< HEAD:src/blocks/user-info/__photo/user-info__photo.css
+
 .user-info__photo {
   width: 150px;
   height: 150px;
@@ -18,24 +18,3 @@
     margin-top: 40px;
   }
 }
-=======
-.user-info__photo {
-  width: 150px;
-  height: 150px;
-  min-width: 150px;
-  border-radius: 50%;
-  background-size: cover;
-  background-position: center;
-  cursor: pointer;
- 
-}
-.user-info__photo:hover {
-  opacity: .5;
-}
-
-@media screen and (max-width: 980px) {
-  .user-info__photo {
-    margin-top: 40px;
-  }
-}
->>>>>>> 88a787620dfaf1a99aafbe7d3212697a0429c5ee:blocks/user-info/__photo/user-info__photo.css
