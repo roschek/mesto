@@ -38,6 +38,7 @@ const form = document.forms.new;
 const formEdit = document.forms.person;
 const formAva = document.forms.avatar;
 const { name, link } = form.elements;
+const {pers, description} = formEdit.elements;
 
 const errorMessages = {
   empty: 'Это обязательное поле',
@@ -94,6 +95,28 @@ api.getInitialCards()
   .catch(err => { console.log(`Упc, что-то пошло не так, например это ${err}`) })
 
 // добавляем фоточки
+
+function changePerson(event) {
+  event.preventDefault();
+
+  api.updateInfo(pers.value, description.value)
+    .then((data) => {
+
+      const userName = document.querySelector('.user-info__name');
+      const userDescription = document.querySelector('.user-info__job');
+      userName.textContent = data.name;
+      userDescription.textContent = data.about;
+
+      popupEdit.close();
+
+    })
+
+    .catch(err => {
+
+      console.log(`Упc, что-то пошло не так, например это ${err}`)
+    })
+
+}
 
 function addPhoto(evt) {
 
@@ -168,7 +191,7 @@ openPopupAva.addEventListener('click', () => {
 popupClose.addEventListener('click', popup.close)
 popupCloseEdit.addEventListener('click', popupEdit.close)
 closePopupAva.addEventListener('click', popupAva.close)
-formEdit.addEventListener('submit', newCard.changePerson);
+formEdit.addEventListener('submit', changePerson);
 form.addEventListener('submit', addPhoto);
 formAva.addEventListener('submit', changeAvatar)
 placesList.addEventListener('click', popPhoto.open)
