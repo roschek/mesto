@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mesto</title>
+  <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.css %>">
+</head>
+
+<body>
+  <div class="root">
+    <header class="header root__section">
+      <img src="<%=require('../images/logo.svg').default%>" alt="mesto logo" class="logo">
+    </header>
+    <div class="profile root__section">
+      <div class="user-info">
+        <div class="user-info__photo"></div>
+        <div class="user-info__data">
+          <h1 class="user-info__name"></h1>
+          <p class="user-info__job"></p>
+          <button class="button__edit">Edit</button>
+        </div>
+        <button class="button user-info__button">+</button>
+      </div>
+    </div>
+    <div class="places-list root__section">
+
+      <!-- Пример вёрстки карточки: -->
+
+
+      <!-- конец примера. -->
+
+    </div>
+    <div class="popup popup__card">
+      <div class="popup__content">
+        <img src="<%=require('../images/close.svg').default%>" alt="" class="popup__close">
+        <h3 class="popup__title">Новое место</h3>
+        <form id="new" class="popup__form" name="new" novalidate>
+          <div class="input-container">
+            <input id="name" type="text" name="name" class="popup__input popup__input_type_name input__new"
+              placeholder="Название" minlength="2" maxlength="30" required>
+            <span id="name-error" class="form-error error"></span>
+          </div>
+          <div class="input-container">
+            <input id="link" type="url" name="link" class="popup__input popup__input_type_link-url input__new"
+              placeholder="Ссылка на картинку" minlength="2"  required>
+            <span id="link-error" class="form-error error"></span>
+          </div>
+          <button id="submit" class="button popup__button" disabled>+</button>
+        </form>
+      </div>
+    </div>
+    <!--новый див с редактированием карточки-->
+
+    <div class="popup popup__edit">
+      <div class="popup__content">
+        <img src="<%=require('../images/close.svg').default%>" alt="" class="popup__close popup__close-edit">
+        <h3 class="popup__title">Редактировать профиль</h3>
+        <form id="person" class="popup__form" name="person" novalidate>
+          <div class="input-container">
+            <input id="pers" type="text" name="pers" class="popup__input popup__input_type_name" minlength="2"
+              maxlength="30" required>
+            <span id="pers-error" class="form-error error"></span>
+          </div>
+          <div class="input-container">
+            <input id="description" type="text" name="description" class="popup__input popup__input_type_link-url"
+              minlength="2" maxlength="30" required ">
+            <span id=" description-error" class="form-error error"></span>
+          </div>
+          <button id="submit-pers" class="button button__popup-edit">Сохранить</button>
+        </form>
+      </div>
+    </div>
+
+    <!--див с фоточками-->
+    <div class="popup popup__photo">
+      <div class="img__popup-container">
+
+      <img src="#" alt="" class="popup__image">
+      <img src="<%=require('../images/close.svg').default%>" alt="" class="popup__close popup__close-photo">
+    </div>
+
+  </div>
+
+    <!-- попап для смены аватарки-->
+
+    <div class="popup popup__avatar">
+      <div class="popup__content">
+        <img src="<%=require('../images/close.svg').default%>" alt="" class="popup__close popup__close-ava">
+        <h3 class="popup__title">Обновить аватар</h3>
+        <form id="avatar" class="popup__form" name="avatar" novalidate>
+          <div class="input-container">
+            <input id="ava" type="url" name="ava" class="popup__input popup__input-ava" minlength="2" maxlength="90"
+              placeholder="ссылка на картинку" required>
+            <span id=" ava-error" class="form-error error">Это обязательное поле</span>
+          </div>
+          <button class="button button__popup-ava" disabled>Сохранить</button>
+        </form>
+      </div>
+
+    </div>
+
+    <script type="module" src="<%= htmlWebpackPlugin.files.js %>"></script>
+</body>
+
+</html>
