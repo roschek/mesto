@@ -1,3 +1,4 @@
+
 export class FormValid {
   constructor(form, errors) {
     this.form = form;

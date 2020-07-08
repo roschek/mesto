@@ -1,4 +1,4 @@
- export class Api {
+export class Api {
   constructor(options) {
     this.url = options.baseUrl
     this.headers = options.headers;
@@ -9,26 +9,26 @@
     return fetch(`${this.url}/users/me`, {
       headers: this.headers
     })
-      .then(res => {
-        if (!res.ok) {
-          return Promise.reject(res.status);
-        } else {
-          return res.json();
-        }
-      })
+    .then(res => {
+      if (!res.ok) {
+        return Promise.reject(res.status);
+      } else {
+        return res.json();
+      }
+    })
   }
 
   getInitialCards() {
     return fetch(`${this.url}/cards`, {
       headers: this.headers
     })
-      .then(res => {
-        if (!res.ok) {
-          return Promise.reject(res.status);
-        } else {
-          return res.json();
-        }
-      })
+    .then(res => {
+      if (!res.ok) {
+        return Promise.reject(res.status);
+      } else {
+        return res.json();
+      }
+    })
   }
 
   updateInfo(name, about) {
@@ -40,16 +40,16 @@
         about: about
       }),
     })
-      .then(res => {
+    .then(res => {
 
-        if (res.status >= 200 || res.status <= 299) {
-          return res.json();
-        } else {
+      if (res.status>=200||res.status<=299) {
+        return res.json();
+      } else {
 
-          return Promise.reject(res.status);
+        return Promise.reject(res.status);
 
-        }
-      })
+      }
+    })
   }
 
   addCardToServer(name, link) {
@@ -59,17 +59,17 @@
       body: JSON.stringify({
         name: name,
         link: link,
-
+        
       })
 
     })
-      .then(res => {
-        if (!res.ok) {
-          return Promise.reject(res.status);
-        } else {
-          return res.json();
-        }
-      })
+    .then(res => {
+      if (!res.ok) {
+        return Promise.reject(res.status);
+      } else {
+        return res.json();
+      }
+    })
   }
 
   deleteCard(id) {
@@ -87,6 +87,7 @@
       })
   }
 
+  
   cardLike(id) {
     return fetch(`${this.url}/cards/like/${id}`,
       {
@@ -111,13 +112,12 @@
 
       })
     })
-      .then(res => {
-        if (!res.ok) {
-          return Promise.reject(res.status);
-        } else {
-          return res.json();
-        }
-      })
+    .then(res => {
+      if (!res.ok) {
+        return Promise.reject(res.status);
+      } else {
+        return res.json();
+      }
+    })
   }
-};
-
+}
