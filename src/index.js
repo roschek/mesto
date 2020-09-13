@@ -49,7 +49,7 @@ const errorMessages = {
 
 
 const api = new Api({
-  baseUrl: 'https://praktikum.tk/cohort11',
+  baseUrl: 'https://nomoreparties.co/cohort11',
   headers: {
     authorization: 'b8380451-2782-4063-bf78-8aa1a677993c',
     'Content-Type': 'application/json'
